@@ -1,88 +1,102 @@
+<?php
+    include "./admin/php/conexion.php";
+    $resultado= $conexion->query("select * from productos order by id desc limit 3")or die($conexion->error);
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mi tienda</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="./dashboard/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="./dashboard/dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones GAJA</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/media.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
-<body class="hold-transition sidebar-mini">
-<!-- Site wrapper -->
-<div class="wrapper">
-  <!-- Navbar -->
-    <?php include "./layouts/header.php"; ?>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <?php include "./layouts/sideBar.php"; ?>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Inicio</h1>
-          </div>
+<body>
+    <header>
+        <div id="logo">
+            <img src="./img/logo.png" alt="">
         </div>
-      </div><!-- /.container-fluid -->
+        <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Inicio</a>
+                </li>
+                <li>
+                    <a href="#">Conócenos</a>
+                </li>
+                <li>
+                    <a href="#">Productos</a>
+                </li>
+                <li>
+                    <a href="#">Ofertas</a>
+                </li>
+                <li>
+                    <a href="#">Acerca de</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="slide">
+        <h1>Soluciones GAJA</h1>
+        <h3>La tecnología al alcance de tu mano</h3>
+        <button>Conoce nuestros productos</button>
     </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Title</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>
+    <section id="ofert">
+        <h2>Nuestras ofertas</h2>
+        <div>
+        <?php
+          while($fila=mysqli_fetch_array($resultado)){
+        ?>
+            <div id="columna3">
+                <img src="./img/productos/<?php echo $fila['imagen'];?>" alt="">
+                <div id="mitad">
+                    <div>
+                        <p><?php echo $fila['nombre'];?></p>
+                        <button>Comprar</button>
+                    </div>
+                    <div>
+                        <p id="precio">$<?php echo $fila['precio'];?></p>
+                    </div>
+                </div>
+            </div>
+        <?php
+          }
+        ?>
+            
+            </div>
         </div>
-        <div class="card-body">
-          Start creating your amazing application!
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
-
     </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php include "./layouts/footer.php"; ?>
-
-
-
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="./dashboard/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="./dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="./dashboard/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="./dashboard/dist/js/demo.js"></script>
+    <footer>
+        <div id="fi">
+            <p style="font-size: 1.5rem;">Contacto</p>
+            <p>sales@example.com</p>
+            <p>support@example</p>
+            <p>+52 636 127 64 83</p>
+        </div>
+        <div id="se">
+            <p style="font-size: 1.5rem;">Conócenos</p>
+            <div>
+                <a href=""><img src="./img/fa.png" alt=""></a>
+                <a href=""><img src="./img/me.png" alt=""></a>
+                <a href=""><img src="./img/wh.png" alt=""></a>
+                <a href=""><img src="./img/tw.png" alt=""></a>
+                <a href=""><img src="./img/yt.png" alt=""></a>
+            </div>
+        </div>
+        <div id="th">
+            <p style="font-size: 1rem;">Deseas recibir nuestras ofertas</p>
+            <div>
+               <input type="mail" placeholder="@ Correo">
+               <button>Registrar</button>
+            </div>
+            
+        </div>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,83 @@
+@media screen and (min-width: 300px){
+   nav{
+       display: none;
+   } 
+   .checkbtn{
+    display: block;
+  }
+  
+   h1{
+        font-size: 2.5rem;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    h3{
+        font-size: 1rem;
+    }
+    #ofert > div{
+        width: 100%;
+    }
+    #ofert > div > #columna3 > #mitad > div > #precio{
+        font-size: 1rem;
+    }
+    footer > #fi{
+        display: none;
+    }
+    footer > #se{
+        width: 100%;
+    }
+    footer > #th{
+        display: none;
+    }
+}
+@media screen and (min-width: 768px){
+    nav{
+        display: block;
+    }.checkbtn{
+        display: none;
+      }
+    footer > #fi{
+        display: block;
+    }
+    footer > #se{
+        width: 40%;
+    }
+    footer > #th{
+        display: block;
+    }
+}
+    
+@media screen and (min-width: 992px){
+    nav{
+        display: block;
+    }
+    .checkbtn{
+        display: none;
+      }
+    h1{
+        font-size: 2.8rem;
+    }
+    h2{
+        font-size: 1.8rem;
+    }
+    h3{
+        font-size: 1.2rem;
+    }
+    #ofert > div{
+        width: 95%;
+    }
+    #ofert > div > #columna3 > #mitad > div > #precio{
+        font-size: 2rem;
+    }
+    footer > #fi{
+        display: flex;
+    }
+    footer > #se{
+        width: 40%;
+    }
+    footer > #th{
+        display: block;
+    }
+
+}
